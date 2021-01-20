@@ -1,5 +1,5 @@
 from discord import Client, Intents
-from greet import greet
+from greet import greet, getGif
 from actions import act
 
 class Bot(Client):
@@ -14,7 +14,8 @@ class Bot(Client):
         if self.user not in message.mentions:
             return 
         answer = act(message.content)
-        await message.channel.send(answer)    
+        await message.channel.send(answer)   
+        await message.channel.send(getGif())
     
     async def on_member_join(self, member):
         guild = member.guild
