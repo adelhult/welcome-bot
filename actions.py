@@ -58,14 +58,18 @@ actions = [
     Action(
         "hej",
         "**Hej på dig!** :)"
+    ),
+    Action(
+        "tack",
+        "Ingen fara <a:tackArr:794227156347387966>!"
     )
 ]
 
 failure_phrase = [
     "Jag förstår inte vad du menar :(",
-    "Jag vet inte hur man gör det tyvärr :rolf_poggers:",
-    "Kan du förklara igen? Jag förstod inte :denhar_smorjan:",
-    "Jag förstår inte :anvand_kompendiet:",
+    "Jag vet inte hur man gör det tyvärr <a:rolf_poggers:794227500464209930>",
+    "Kan du förklara igen? Jag förstod inte <a:denhar_smorjan:800665072653172747>",
+    "Jag förstår inte <a:anvand_kompendiet:800665026981265438>",
     "Jag förstår inte hur man gör det (än...)"
 ]
     
