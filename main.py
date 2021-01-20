@@ -1,6 +1,6 @@
 import discord
 
-class MyClient(discord.Client):
+class WelcomeBot(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
@@ -8,8 +8,11 @@ class MyClient(discord.Client):
         print(f'Message from {message.author}: {message.content}')
 
 def main():
-    client = MyClient()
-    client.run('TOKEN')
+    with open('token.txt', 'r') as f:
+        token = f.read().strip()
+
+    client = WelcomeBot()
+    client.run(token)
 
 if __name__ == '__main__':
     main()
