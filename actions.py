@@ -1,4 +1,5 @@
 from random import choice
+from greet import greet
 import re
 
 class Action():
@@ -44,8 +45,15 @@ actions = [
         lambda msg: msg
     ),
     Action(
+        "välkomm",
+        lambda _: greet() 
+    ),
+    Action(
         "källkod",
         "Du kan läsa min källkod här! https://github.com/adelhult/welcome-bot/"
+    ),
+    Action("hejdå",
+        "Syns sen!"
     ),
     Action(
         "hej",
