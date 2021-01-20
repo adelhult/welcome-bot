@@ -15,5 +15,15 @@ def greet():
 
     return word + " välkommen!"
 
+def getGif():
+    gifList = [welcome1.gif, welcome2.gif, welcome3.gif]
+    gif = coice(gifList)
+    
+    with open(gif, 'rb') as f:
+        gif = discord.File(f)
+    
+    return gif
+    
+wait channel.send(channel, picture)
 def is_vowel(c):
     return c in 'aouåeiyäö'
