@@ -1,8 +1,6 @@
 vabbande
 vabbandes
-vaccinerad
 vaccinerande
-vaccinerandes
 vacker
 vacklande
 vacklandes
@@ -198,7 +196,7 @@ vederstygglig
 vedertagen
 vedervärdig
 vegansk
-    vegetabilisk
+vegetabilisk
 vegetarisk
 vegeterande
 vegeterandes
