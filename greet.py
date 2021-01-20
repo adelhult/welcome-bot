@@ -19,7 +19,7 @@ def getGif():
     gifList = [welcome1.gif, welcome2.gif, welcome3.gif]
     gif = coice(gifList)
     
-    with open(gif, 'rb') as f:
+    with open(welcomes/gif, 'rb') as f:
         gif = discord.File(f)
     
     return gif
