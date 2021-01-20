@@ -15,7 +15,7 @@ class Bot(Client):
             return 
         answer = act(message.content)
         await message.channel.send(answer)   
-        await message.channel.send(getGif())
+       
     
     async def on_member_join(self, member):
         guild = member.guild
