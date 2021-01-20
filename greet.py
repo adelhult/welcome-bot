@@ -7,15 +7,13 @@ def greet():
     word = choice(words)
     word = word.strip()
     word = word.capitalize()
+
     if (word[-1] == 'd'):
         word = word[:-1] + 't'
-    elif (not(isVowel(word[-1])) and word[-1] != 't'):
+    elif (not is_vowel(word[-1]) and word[-1] != 't'):
         word += 't'
 
-    phrase = word + " välkommen!"
-    return phrase
+    return word + " välkommen!"
 
-def isVowel(c):
-    isVowel = (c == 'a' or c == 'e' or c == 'i' or c == 'o' or c == 'u')
-    return isVowel
-    
+def is_vowel(c):
+    return c in 'aouåeiyäö'
