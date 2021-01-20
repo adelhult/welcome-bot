@@ -1,5 +1,5 @@
 from discord import Client, Intents
-from greet import greet, getGif
+from greet import greet, get_gif
 from actions import act
 
 class Bot(Client):
@@ -20,7 +20,10 @@ class Bot(Client):
     async def on_member_join(self, member):
         guild = member.guild
         if guild.system_channel is not None:
-            await guild.system_channel.send(greet())
+            greeting = greet()
+            gif = get_gif()
+            await guild.system_channel.send(greeting)
+            await guild.system_channel.send(file=gif)
 
 def main():
     with open('token.txt', 'r') as f:

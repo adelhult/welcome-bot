@@ -1,4 +1,5 @@
 from random import choice
+from discord import File
 
 def greet():
     with open('words.txt', encoding='utf8') as file:
@@ -15,15 +16,12 @@ def greet():
 
     return word + " välkommen!"
 
-def getGif():
-    gifList = [welcome1.gif, welcome2.gif, welcome3.gif]
-    gif = coice(gifList)
+def get_gif():
+    gif_list = ['welcome1.gif', 'welcome2.gif', 'welcome3.gif']
+    gif = choice(gif_list)
     
-    with open(welcomes/gif, 'rb') as f:
-        gif = discord.File(f)
+    with open('welcomes/' + gif, 'rb') as f:
+        return File(f, filename='Welcome!')
     
-    return gif
-    
-wait channel.send(channel, picture)
 def is_vowel(c):
     return c in 'aouåeiyäö'
