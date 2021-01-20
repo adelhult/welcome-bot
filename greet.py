@@ -21,7 +21,7 @@ def get_gif():
     gif = choice(gif_list)
     
     with open('welcomes/' + gif, 'rb') as f:
-        return File(f, filename='Welcome!')
+        return File(f, filename='welcome.gif')
     
 def is_vowel(c):
     return c in 'aouåeiyäö'

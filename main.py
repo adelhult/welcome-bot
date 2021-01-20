@@ -1,4 +1,4 @@
-from discord import Client, Intents
+from discord import Client, Intents, Embed
 from greet import greet, get_gif
 from actions import act
 
@@ -22,8 +22,9 @@ class Bot(Client):
         if guild.system_channel is not None:
             greeting = greet()
             gif = get_gif()
-            await guild.system_channel.send(greeting)
-            await guild.system_channel.send(file=gif)
+            embed = Embed(title=greeting)
+            embed.set_image(url=f"attachment://'welcome.gif")
+            await guild.system_channel.send(file=gif, embed=embed)
 
 def main():
     with open('token.txt', 'r') as f:
