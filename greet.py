@@ -17,7 +17,7 @@ def greet():
     return word + " välkommen!"
 
 def get_gif():
-    gif_list = ['welcome1.gif', 'welcome2.gif', 'welcome3.gif']
+    gif_list = ['welcome1.gif', 'welcome2.gif', 'welcome3.gif', 'welcome4.gif', 'welcome5.gif']
     gif = choice(gif_list)
     
     with open('welcomes/' + gif, 'rb') as f:
