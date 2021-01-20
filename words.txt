@@ -15,7 +15,6 @@ vagabonderandes
 vaggad
 vaggande
 vaggandes
-vaginal
 vajande
 vajandes
 vakande
@@ -38,8 +37,6 @@ valid
 validerad
 validerande
 validerandes
-valkande
-valkandes
 vallad
 vallande
 vallandes
@@ -116,7 +113,6 @@ varlig
 varligt
 varm
 varmhjärtad
-varm i kläderna
 varmpressad
 varnad
 varnande
