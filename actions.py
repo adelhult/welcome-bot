@@ -1,5 +1,6 @@
 from random import choice
 from greet import greet
+import analys
 import re
 
 class Action():
@@ -62,6 +63,10 @@ actions = [
     Action(
         "tack",
         "Ingen fara <:tackArr:794227156347387966>!"
+    ),
+    Action(
+        "läsvecka 2",
+        analys.week2()
     )
 ]
 
