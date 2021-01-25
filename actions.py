@@ -42,6 +42,10 @@ actions = [
         "Här är vårt schema:\nhttps://cloud.timeedit.net/chalmers/web/public/ri1Y93ygZ05ZZQQ1X75v5Y075Q45x4966g080YQQ617.html"
     ),
     Action(
+        "läsvecka 2",
+        analys.week2()
+    ),
+    Action(
         "härma",
         lambda msg: msg
     ),
@@ -63,10 +67,6 @@ actions = [
     Action(
         "tack",
         "Ingen fara <:tackArr:794227156347387966>!"
-    ),
-    Action(
-        "läsvecka 2",
-        analys.week2()
     )
 ]
 
