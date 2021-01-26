@@ -1,4 +1,4 @@
-from discord import Client, Intents, Embed
+from discord import Client, Intents, Embed, ChannelType
 from greet import greet, get_gif
 from actions import act
 
@@ -8,13 +8,15 @@ class Bot(Client):
 
     
     async def on_message(self, message):
+
         if message.author == self.user:
             return
+
+        if (self.user in message.mentions
+            or message.channel.type == ChannelType.private):
+            await act(message)
+
         
-        if self.user not in message.mentions:
-            return 
-        answer = act(message.content)
-        await message.channel.send(answer)   
        
     
     async def on_member_join(self, member):
