@@ -1,10 +1,10 @@
 from actions.add import *
+import analys
 from greet import greet
 
-@add("test")
-async def test(msg):
-    print(msg.content)
-    await msg.channel.send("hej!!!!!!")
+@add("läsvecka 2")
+async def week2(msg):
+    await msg.channel.send(analys.week2())
 
 @add("schema")
 async def schedule(msg):
