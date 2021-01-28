@@ -20,20 +20,36 @@ def add(predicate):
         return "hello"
     ```
     """
+
     # If the predicate is a string,
     # treat it as a regex and convert it to a lambda
     # expression
     if type(predicate) is str:
         regex = re.compile(predicate, flags=re.IGNORECASE | re.MULTILINE)
-        predicate = lambda s: regex.search(s) is not None
+        p = lambda s: regex.search(s) is not None
 
     def decorator(func):
-        actions.append((predicate, func))
+        actions.append((p, func))
         return func
     
     return decorator
 
+def description():
+    """Generate a description of all the actions"""
+    summery = []
+    for _, func in actions:
+        if doc := func.__doc__: summery.append(doc)
+
+    return "\n".join(summery)
+
+
+
 async def act(msg):
+    """Parse the msg and try to act upon a users request"""
+
+    if "hjälp" in msg.content.lower():
+        await msg.channel.send(description())
+    
     for matches, action in actions:
         if matches(msg.content):
             await action(msg)

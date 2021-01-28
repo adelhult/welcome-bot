@@ -6,18 +6,13 @@ class Bot(Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}!')
 
-    
     async def on_message(self, message):
-
         if message.author == self.user:
             return
 
         if (self.user in message.mentions
             or message.channel.type == ChannelType.private):
             await act(message)
-
-        
-       
     
     async def on_member_join(self, member):
         guild = member.guild
