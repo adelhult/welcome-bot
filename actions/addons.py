@@ -32,14 +32,14 @@ async def github(msg):
     await msg.channel.send("Du kan läsa min källkod här! https://github.com/adelhult/welcome-bot/")
 
 
-@add("hejdå")
+@add("(hejdå|goodbye|bye|ses sen|hörs)")
 async def bye(msg):
     """**Hejdå** - Bye bye!"""
     response = choice(["Hejdå!", "Syns sen!", "Bye!", "Hörs"])
     await msg.channel.send(response)
 
 
-@add("hej")
+@add("(hej|hi|tja|hallå|tjena|hello)")
 async def hello(msg):
     """**Hej** - Hälsa!"""
     await msg.channel.send("hej!")
