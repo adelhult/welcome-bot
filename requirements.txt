@@ -2,3 +2,4 @@ discord.py
 ics
 requests
 arrow
+colorhash
