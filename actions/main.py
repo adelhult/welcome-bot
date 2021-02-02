@@ -38,7 +38,8 @@ def description():
     """Generate a description of all the actions"""
     summery = []
     for _, func in actions:
-        if doc := func.__doc__: summery.append(doc)
+        if func.__doc__:
+           summery.append(__doc__)
 
     return "Här är några av de saker jag kan göra:\n" + "\n".join(summery)
 
