@@ -19,7 +19,7 @@ async def math(msg):
         await msg.channel.send(f.read())
 
 
-@add("(schema)|(lektion)")
+@add("schema)|(lektion")
 async def print_schedule(msg):
     """**Schema** - info om lektioner idag/imorgon/just nu"""
     content = msg.content.lower()
