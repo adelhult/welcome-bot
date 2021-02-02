@@ -40,7 +40,7 @@ def description():
     for _, func in actions:
         if doc := func.__doc__: summery.append(doc)
 
-    return "\n".join(summery)
+    return "Här är några av de saker jag kan göra:\n" + "\n".join(summery)
 
 
 

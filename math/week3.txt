@@ -1,0 +1,35 @@
+```md
+# Uppgifter läsvecka 3
+> Differentialer, Taylorutveckling och medelvärdessatsen
+
+## Medelvärdes-satsen
+2.8.EX1-2, 2.8.1, 2.8.2, 2.8.4
+
+## Linjära approximationer
+4.9.EX3-EX4,4.9.11,4.9.15, 4.9.19
+
+## Noggrannhet av linjär approximationer
+4.9.15, 1.9.19
+
+## Taylorutveckling
+4.10.EX3, 4.10.1, 4.10.2
+
+## Derivering
+(y^2)′= ?
+(y^7)′= ?
+(xy^3)′= ?
+
+## Implicit derivering
+2.9.EX1, 2.9.EX3, 2.9.1-2, 2.9.10
+samt derivera följande:
+y^2 = x
+sin y = x
+tan y = x
+sinh y = x
+y^2 = x^3
+y^n = x^m, där n och m är heltal
+
+## Övrig läsning:
+4.10 Taylor Polynomials > DEF9 (Big-O Notation)
+4.6 Sketching the Graph of a Function > DEF7 (Oblique asymptote)
+```

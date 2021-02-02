@@ -1,18 +1,59 @@
 from actions.main import *
-import analys
+import schedule
 from greet import greet
 
-@add("läsvecka 2")
-async def week2(msg):
-    """**Läsvecka 2** - visa läsvecka 2 """
-    await msg.channel.send(analys.week2())
+@add("läsvecka \d+|LV\d+|uppgifter")
+async def math(msg):
+    """ **Läsvecka <n>** - visa uppgifter för vecka n"""
+    n = "".join(d for d in msg.content if d.isdigit())
+    filename = "./math/week"
+    if n == "2":
+        filename += "2"
+    elif n == "3":
+        filename += "3"
+    else:
+       await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
+       return
+
+    with open(filename + ".txt", 'r', encoding='utf8') as f:
+        await msg.channel.send(f.read())
 
 
-@add("schema")
-async def schedule(msg):
-    """**Schema** - länk till schemat"""
-    await msg.channel.send("Här är vårt schema:\nhttps://cloud.timeedit.net/chalmers/web/public/ri1Y93ygZ05ZZQQ1X75v5Y075Q45x4966g080YQQ617.html")
+@add("(schema)|(lektion)")
+async def print_schedule(msg):
+    """**Schema** - info om lektioner idag/imorgon/just nu"""
+    content = msg.content.lower()
 
+    if "idag" in content or "dagens" in content:
+        title, events = schedule.day(0)
+        await msg.channel.send(title)
+        await send_events(events, msg.channel)
+    
+    if "imorgon" in content or "morgondag" in content or "i morgon" in content:
+        title, events = schedule.day(1)
+        await msg.channel.send(title)
+        await send_events(events, msg.channel)
+    
+    if "övermorgon" in content:
+        title, events = schedule.day(2)
+        await msg.channel.send(title)
+        await send_events(events, msg.channel)
+        
+    if "nästa" in content:
+        title, event = schedule.get_next()
+        if event is not None:
+            await msg.channel.send(title, embed=event)
+        else:
+             await msg.channel.send(title)
+    
+    if "nu" in content:
+        title, events = schedule.get_current()
+        await msg.channel.send(title)
+        await send_events(events, msg.channel)
+
+async def send_events(events, channel):
+        for event in events:
+            await channel.send(embed=event)
 
 @add("härma")
 async def imitate(msg):
@@ -20,7 +61,7 @@ async def imitate(msg):
     await msg.channel.send(msg.content)
 
 
-@add("välkomm")
+@add("välkomm(en|na)")
 async def welcome(msg):
     """**Välkommen/välkommna** - skicka ett välkomstmeddelande"""
     await msg.channel.send(greet())
