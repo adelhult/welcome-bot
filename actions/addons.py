@@ -1,11 +1,19 @@
 from actions.main import *
 import schedule
+import re
 from greet import greet
 
 @add("läsvecka \d+|LV\d+|uppgifter")
 async def math(msg):
-    """ **Läsvecka <n>** - visa uppgifter för vecka n"""
-    n = "".join(d for d in msg.content if d.isdigit())
+    """**Läsvecka <n>** - visa uppgifter för vecka n"""
+    n = ""
+    p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
+        flags=re.IGNORECASE | re.MULTILINE)
+    for match in p.search(msg.content).groups():
+        if match is not None:
+            n = match
+            break
+
     filename = "./math/week"
     if n == "2":
         filename += "2"
@@ -19,7 +27,7 @@ async def math(msg):
         await msg.channel.send(f.read())
 
 
-@add("schema)|(lektion")
+@add("schema|lektion")
 async def print_schedule(msg):
     """**Schema** - info om lektioner idag/imorgon/just nu"""
     content = msg.content.lower()
@@ -73,7 +81,7 @@ async def github(msg):
     await msg.channel.send("Du kan läsa min källkod här! https://github.com/adelhult/welcome-bot/")
 
 
-@add("(hejdå|goodbye|bye|ses sen|hörs)")
+@add("hejdå|goodbye|bye|ses sen|hörs")
 async def bye(msg):
     """**Hejdå** - Bye bye!"""
     response = choice(["Hejdå!", "Syns sen!", "Bye!", "Hörs"])
