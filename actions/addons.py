@@ -6,26 +6,30 @@ from greet import greet
 @add("läsvecka \d+|LV\d+|uppgifter")
 async def math(msg):
     """**Läsvecka <n>** - visa uppgifter för vecka n"""
-    n = ""
+    
+    n = None
     p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
         flags=re.IGNORECASE | re.MULTILINE)
-    for match in p.search(msg.content).groups():
-        if match is not None:
-            n = match
+    
+    for number in p.search(msg.content).groups():
+        if number is not None:
+            n = int(number)
             break
 
-    filename = "./math/week"
-    if n == "2":
-        filename += "2"
-    elif n == "3":
-        filename += "3"
-    else:
-       await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
-       return
-
-    with open(filename + ".txt", 'r', encoding='utf8') as f:
-        await msg.channel.send(f.read())
-
+    filename = f"./math/week{number}.txt"
+    
+    # cancel if they did not enter a number (should not really happen)
+    if number is None:
+        await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
+        return
+    
+    try:
+        # I think that this should be somewhat safe, since I only allow
+        # the end user to input an integer
+        with open(filename, 'r', encoding='utf8') as f:
+            await msg.channel.send(f.read())
+    except Exception:
+        await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
 
 @add("schema|lektion")
 async def print_schedule(msg):
