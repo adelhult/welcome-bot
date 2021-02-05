@@ -52,6 +52,9 @@ def gen_event(event):
     time = f"Tid: {begin} - {end}"
 
     title = f"{emoji(event)} **{event.name}**"
+    if len(title) > 210:
+        title = title[0:200]
+    
     desc =  f"{event.description}"
 
     # generate a color:
