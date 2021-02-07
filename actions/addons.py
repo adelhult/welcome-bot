@@ -68,7 +68,7 @@ async def send_events(events, channel):
             await channel.send(embed=event)
 
 @add("boka|grupprum")
-def booking(msg):
+async def booking(msg):
     """**Boka grupprum** - skicka länken för att boka ett grupprum"""
     link = "https://cloud.timeedit.net/chalmers/web/b1/"
     await msg.channel.send(f"Här är länken för att boka ett grupprum på campus:\n {link}")

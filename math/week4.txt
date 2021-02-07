@@ -1,6 +1,6 @@
 ```md
 # Läsvecka 4
-> Integraler: grunder & och tekniker
+> Integraler: grunder & tekniker
 
 ## Areas as Limits of Sums
 5.2.1 och 5.28
