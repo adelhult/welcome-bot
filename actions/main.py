@@ -57,4 +57,5 @@ async def act(msg):
             break
 
     # otherwise... print a failure phrase
-    choice(failure_phrase)
+    response = choice(failure_phrase)
+    await msg.channel.send(response)
