@@ -1,0 +1,28 @@
+```md
+# Läsvecka 4
+> Integraler: grunder & och tekniker
+
+## Areas as Limits of Sums
+5.2.1 och 5.28
+
+## The definite integral
+5.3.1, 5.3.4, 5.3.10, 5.3.11, och 5.3.15
+ 
+##  Properties of the Definite Integral
+5.4.1, 5.4.2,  5.4.3, 5.4.6,  5.4.7, 5.4.17
+
+## Analysens fundamentalsats
+5.5.3, 5.5.4, 5.5.9, 5.5.11, 5.5.13, 5.5.49,
+5.5.39, 5.5.49, 5.5.41, 5.5.42, 5.5.47
+(tips: räkna derivatan av höger och vänster sidan)
+
+## Integrationstekniker
+Partiell integration:
+6.1.1, 6.1.2, 6.1.5, 6.1.31, 6.1.32
+
+Rationell integration:
+6.2.12, 6.2.22
+
+Substitutions-tekniker:
+6.3.1, 6.3.3, 6.3.9, 6.3.16, 6.3.24
+```
