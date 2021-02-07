@@ -1,13 +1,5 @@
 import re
 
-failure_phrase = [
-    "Jag förstår inte vad du menar :(",
-    "Jag vet inte hur man gör det tyvärr <:rolf_poggers:794227500464209930>",
-    "Kan du förklara igen? Jag förstod inte <:denhar_smorjan:800665072653172747>",
-    "Jag förstår inte <:anvand_kompendiet:800665026981265438>",
-    "Jag förstår inte hur man gör det (än...)"
-]
-
 actions = []
 
 def add(predicate):
