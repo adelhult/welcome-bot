@@ -50,8 +50,8 @@ async def act(msg):
 
     if "hjälp" in msg.content.lower():
         await msg.channel.send(description())
-    
-    await get_action(msg.content)(msg)
+    else:
+        await get_action(msg.content)(msg)
 
 def get_action(content):
     """Find the correct action to responed with"""
