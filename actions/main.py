@@ -1,4 +1,3 @@
-from random import choice
 import re
 
 failure_phrase = [
@@ -27,6 +26,7 @@ def add(predicate):
     if type(predicate) is str:
         regex = re.compile(predicate, flags=re.IGNORECASE | re.MULTILINE)
         p = lambda s: regex.search(s) is not None
+    else: p = predicate
 
     def decorator(func):
         actions.append((p, func))
@@ -51,11 +51,12 @@ async def act(msg):
     if "hjälp" in msg.content.lower():
         await msg.channel.send(description())
     
-    for matches, action in actions:
-        if matches(msg.content):
-            await action(msg)
-            break
+    await get_action(msg.content)(msg)
 
-    # otherwise... print a failure phrase
-    response = choice(failure_phrase)
-    await msg.channel.send(response)
+def get_action(content):
+    """Find the correct action to responed with"""
+    for matches, action in actions:
+        if matches(content):
+            return action
+    
+    return None

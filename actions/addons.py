@@ -1,4 +1,5 @@
 from actions.main import *
+from random import choice
 import schedule
 import re
 from greet import greet
@@ -102,3 +103,9 @@ async def bye(msg):
 async def hello(msg):
     """**Hej** - Hälsa!"""
     await msg.channel.send("hej!")
+
+# should aways be of lowest priority 
+@add(lambda _: True)
+async def failure(msg):
+    # otherwise... print a failure phrase
+    await msg.channel.send(choice(failure_phrase))
