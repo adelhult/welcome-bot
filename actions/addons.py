@@ -21,7 +21,7 @@ async def math(msg):
     
     # cancel if they did not enter a number (should not really happen)
     if number is None:
-        await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
+        await msg.channel.send(f"Förstår inte vad du menar! :(")
         return
     
     try:
