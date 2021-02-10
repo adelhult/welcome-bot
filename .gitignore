@@ -6,6 +6,7 @@ token.txt
 .vscode
 # C extensions
 *.so
+config.py
 
 # Distribution / packaging
 .Python

@@ -1,6 +1,13 @@
 from discord import Client, Intents, Embed, ChannelType
 from greet import greet, get_gif
 from actions import act
+import sys
+
+try:
+    from config import *
+except Exception:
+    print("You need to create a config object!!")
+    sys.exit(1)
 
 class Bot(Client):
     async def on_ready(self):
@@ -24,8 +31,7 @@ class Bot(Client):
             await guild.system_channel.send(file=gif, embed=embed)
 
 def main():
-    with open('token.txt', 'r') as f:
-        token = f.read().strip()
+    token = conf["token"]
 
     intents = Intents.default()
     intents.members = True

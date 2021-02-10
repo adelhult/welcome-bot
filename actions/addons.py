@@ -1,12 +1,65 @@
-from actions.main import *
-from random import choice
-import schedule
-import re
+from discord import File, Embed
+from requests import get
 from greet import greet
+from actions.main import *
+from config import *
+import schedule
+from random import choice
+import re
+import io
 
-@add("läsvecka \d+|LV\d+|uppgifter")
+
+@add("`.*`")
+async def plot(msg):
+    """**Rita graf** Skriv exempelvis `x^2` så plottar jag det!"""
+    api = conf["plot_api"]
+
+    # find the provided function:
+    p = re.compile("`(?:.*=)?(.*)`",
+        flags=re.IGNORECASE | re.MULTILINE)
+    fn = p.search(msg.content).groups()[0].strip()
+    
+    # get potential extra params from the user
+    y_min = get_param("y_min", msg.content, -10)
+    y_max = get_param("y_max", msg.content,  10)
+    x_min = get_param("x_min", msg.content, -10)
+    x_max = get_param("x_max", msg.content,  10)
+
+    # get the filename of the videos
+    filename = get(
+        api + "/generate/",
+        timeout=20,
+        params={
+            "fn": fn,
+            "y_min": y_min,
+            "y_max": y_max,
+            "x_min": x_min,
+            "x_max": x_max
+        },).text
+    
+    # error?
+    if filename == "":
+        await msg.channel.send("Attans! Jag kunde inte tolka det!")
+        return
+
+    # send the video file to the channel
+    file_data = get(f"{api}/videos/{filename}", timeout=20).content
+    f = File(io.BytesIO(file_data), filename=filename)
+    await msg.channel.send(file=f)
+
+def get_param(name, src, fallback):
+    """Get param like name=<int>, else return the fallback"""
+    p = re.compile(rf"{name}\s*=\s*(-?\d+)",
+        re.IGNORECASE | re.MULTILINE)
+    try:
+        result = p.search(src).groups(1)[0].strip()
+        return int(result)
+    except Exception:
+        return fallback
+
+@add("läsvecka \d+|LV\d+|uppgifter vecka \d+")
 async def math(msg):
-    """**Läsvecka <n>** - visa uppgifter för vecka n"""
+    """**Läsvecka <n>** - Visa uppgifter för vecka n """
     
     n = None
     p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
@@ -34,7 +87,7 @@ async def math(msg):
 
 @add("schema|lektion")
 async def print_schedule(msg):
-    """**Schema** - info om lektioner idag/imorgon/just nu"""
+    """**Schema** - info om lektioner idag/imorgon/just nu """
     content = msg.content.lower()
 
     if "idag" in content or "dagens" in content:
