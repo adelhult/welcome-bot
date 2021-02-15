@@ -1,0 +1,14 @@
+```md
+# Uppgifter läsvecka 5
+> Tillämpningar - längder, ytor, och volymer
+
+## 2D-ytor
+5.7.1,  5.7.2, 5.7.3, 5.7.4
+Svårare problem: 5.7.17, 5.7.18
+
+## Kurvor
+7.3.1, 7.3.2, 7.3.7, 7.3.8
+
+## Rotationsvolymer
+7.3.22, 7.3.23, och 7.3.26
+```
