@@ -20,6 +20,11 @@ class Bot(Client):
         if (self.user in message.mentions
             or message.channel.type == ChannelType.private):
             await act(message)
+        
+        if (self.user in message.mentions 
+            and message.channel.type == ChannelType.private):
+            await message.channel.send(
+                "Fyi, du inte behöver skriva *@Hacke* när du skickar ett PM till mig!")
     
     async def on_member_join(self, member):
         guild = member.guild
