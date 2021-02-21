@@ -1,0 +1,55 @@
+```md
+# Uppgifter läsvecka 6
+> Differentialekvationer som modelleringsverktyg
+
+## Beskriva DE: ordningen, linjär/icke linjär, etc
+AD/18.1: 1-10
+
+## Verifiera lösningar, är summan av lösningar en lösning?
+AD/18.1:11-12 
+
+## Den harmoniska oscillatorn
+AD/18.1.13 (den harmoniska oscillatorn)
+
+## Hyperboliska funktioner
+AD/18.1.14 
+
+## Den karakteristiska ekvationen med reella lösningar
+AD/18.1.16 
+
+## Driven harmonisk oscillatorn + kombinera homogen- & partikulärlösning
+AD/18.1.17 
+
+## Att kombinera homogen- och partikulärlösning
+AD/18.1.18 
+
+## General solution to the second order DE
+AD/3.7:1-12 
+
+## Initial value problems, second order DE
+AD/3.7:13-15
+
+## Harmonic oscialltor
+AD/3.7:26-28 
+
+## Separable equations
+Detta är viktig, gör så många ni kan för att utveckla känslan
+AD/7.9:1-10  
+
+## Metod II, generellt lösning 
+fria konstanter
+AD/7.9:11-16
+
+## Metod II, lösning med begynnelsevillkor
+inga fria konstanter
+AD/7.9:17-20 
+
+# Viktig läsning
+18.1    Classifying differential equations
+7.9     First order differential equations
+18.2    Solving First-Order Equations
+18.4    Second order differential equations
+18.5    Linear differential equations with constant coefficients
+18.6    Non-homogeneous linear equations
+3.7     Second-order linear DEs with constant coefficients
+```
