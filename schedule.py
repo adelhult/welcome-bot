@@ -5,8 +5,7 @@ from ics import Calendar
 import arrow
 
 
-URL = "https://cloud.timeedit.net/chalmers/web/public/ri.ics?sid=3&objects=196836.194&ox=0&p=0.m%2C20210321.x&e=210215&enol=t"
-
+URL = "https://cloud.timeedit.net/chalmers/web/public/ri.ics?sid=3&objects=196836.194&ox=0&p=0.m%2C20210606.x&e=210321&enol=t"
 def get_timeline():
     c = Calendar(get(URL).text)
     return c.timeline
