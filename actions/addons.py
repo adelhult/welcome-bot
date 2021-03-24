@@ -57,33 +57,33 @@ def get_param(name, src, fallback):
     except Exception:
         return fallback
 
-@add("läsvecka \d+|LV\d+|uppgifter vecka \d+")
-async def math(msg):
-    """**Läsvecka <n>** - Visa uppgifter för vecka n """
+# @add("läsvecka \d+|LV\d+|uppgifter vecka \d+")
+# async def math(msg):
+    # """**Läsvecka <n>** - Visa uppgifter för vecka n """
     
-    n = None
-    p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
-        flags=re.IGNORECASE | re.MULTILINE)
+    # n = None
+    # p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
+    #     flags=re.IGNORECASE | re.MULTILINE)
     
-    for number in p.search(msg.content).groups():
-        if number is not None:
-            n = int(number)
-            break
+    # for number in p.search(msg.content).groups():
+    #     if number is not None:
+    #         n = int(number)
+    #         break
 
-    filename = f"./math/week{number}.txt"
+    # filename = f"./math/week{number}.txt"
     
-    # cancel if they did not enter a number (should not really happen)
-    if number is None:
-        await msg.channel.send(f"Förstår inte vad du menar! :(")
-        return
+    # # cancel if they did not enter a number (should not really happen)
+    # if number is None:
+    #     await msg.channel.send(f"Förstår inte vad du menar! :(")
+    #     return
     
-    try:
-        # I think that this should be somewhat safe, since I only allow
-        # the end user to input an integer
-        with open(filename, 'r', encoding='utf8') as f:
-            await msg.channel.send(f.read())
-    except Exception:
-        await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
+    # try:
+    #     # I think that this should be somewhat safe, since I only allow
+    #     # the end user to input an integer
+    #     with open(filename, 'r', encoding='utf8') as f:
+    #         await msg.channel.send(f.read())
+    # except Exception:
+    #     await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
 
 @add("schema|lektion")
 async def print_schedule(msg):
