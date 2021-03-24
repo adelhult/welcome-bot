@@ -83,5 +83,9 @@ def emoji(event):
         return "<:thinkingAboutJava2:800667732973453312>"
     elif "TMV170" in event.name:
         return "<:anvand_kompendiet:800665026981265438>"
+    elif "Maskinorienterad programmering" in event.name:
+        return "<:thinkingAboutMOP:823829306563100672>"
+    elif "Datakommunikation" in event.name:
+        return "<:HELO:823486677774237707>"
     else:
         return "<:rolf_poggers:794227500464209930>"
