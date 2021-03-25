@@ -67,6 +67,8 @@ def gen_event(event):
     link = ""
     if "TMV170" in event.name:
         link = "https://chalmers.zoom.us/j/65949195103"
+    elif "Datakommunikation" in event.name:
+        link = "https://chalmers.zoom.us/j/67775432479"
 
     # create an embeded item
     embed = Embed(title=title,
