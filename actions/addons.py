@@ -1,6 +1,7 @@
 from discord import File, Embed
 from requests import get
 from greet import greet
+from food import get_menu
 from actions.main import *
 from config import *
 import schedule
@@ -9,7 +10,7 @@ import re
 import io
 
 
-@add("`.*`")
+@add("`.*?`")
 async def plot(msg):
     """**Rita graf** Skriv exempelvis `x^2` så plottar jag det!"""
     api = conf["plot_api"]
@@ -84,6 +85,11 @@ def get_param(name, src, fallback):
     #         await msg.channel.send(f.read())
     # except Exception:
     #     await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
+
+@add("mat|lunch|hungrig|resturang|meny|menu|käk|äta|förtära|middag|servera")
+async def menu(msg):
+    """**Meny** - info om lunchmenyerna för de olika resturangerna på campus"""
+    await msg.channel.send(get_menu(msg.content))
 
 @add("schema|lektion")
 async def print_schedule(msg):

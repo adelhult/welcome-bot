@@ -3,3 +3,4 @@ ics
 requests
 arrow
 colorhash
+beautifulsoup4
