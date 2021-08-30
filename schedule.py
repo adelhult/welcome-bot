@@ -5,7 +5,7 @@ from ics import Calendar
 import arrow
 
 
-URL = "https://cloud.timeedit.net/chalmers/web/public/ri.ics?sid=3&objects=196836.194&ox=0&p=0.m%2C20210606.x&e=210321&enol=t"
+URL = "https://cloud.timeedit.net/chalmers/web/public/ri.ics?sid=3&objects=196842.194&p=0.m%2C20210606.x&e=210830&enol=t"
 def get_timeline():
     c = Calendar(get(URL).text)
     return c.timeline
@@ -86,6 +86,8 @@ def emoji(event):
     elif "TMV170" in event.name:
         return "<:anvand_kompendiet:800665026981265438>"
     elif "Maskinorienterad programmering" in event.name:
+        return "<:thinkingAboutMOP:823829306563100672>"
+    elif "Datatekniskt projekt" in event.name:
         return "<:thinkingAboutMOP:823829306563100672>"
     elif "Datakommunikation" in event.name:
         return "<:HELO:823486677774237707>"
