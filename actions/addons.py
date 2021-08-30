@@ -17,9 +17,9 @@ async def plot(msg):
 
     # find the provided function:
     p = re.compile("`(?:.*=)?(.*)`",
-        flags=re.IGNORECASE | re.MULTILINE)
+                   flags=re.IGNORECASE | re.MULTILINE)
     fn = p.search(msg.content).groups()[0].strip()
-    
+
     # get potential extra params from the user
     y_min = get_param("y_min", msg.content, -10)
     y_max = get_param("y_max", msg.content,  10)
@@ -37,7 +37,7 @@ async def plot(msg):
             "x_min": x_min,
             "x_max": x_max
         },).text
-    
+
     # error?
     if filename == "":
         await msg.channel.send("Attans! Jag kunde inte tolka det!")
@@ -48,10 +48,11 @@ async def plot(msg):
     f = File(io.BytesIO(file_data), filename=filename)
     await msg.channel.send(file=f)
 
+
 def get_param(name, src, fallback):
     """Get param like name=<int>, else return the fallback"""
     p = re.compile(rf"{name}\s*=\s*(-?\d+)",
-        re.IGNORECASE | re.MULTILINE)
+                   re.IGNORECASE | re.MULTILINE)
     try:
         result = p.search(src).groups(1)[0].strip()
         return int(result)
@@ -61,23 +62,23 @@ def get_param(name, src, fallback):
 # @add("läsvecka \d+|LV\d+|uppgifter vecka \d+")
 # async def math(msg):
     # """**Läsvecka <n>** - Visa uppgifter för vecka n """
-    
+
     # n = None
     # p = re.compile("läsvecka (\d+)|LV(\d+)|uppgifter vecka (\d+)",
     #     flags=re.IGNORECASE | re.MULTILINE)
-    
+
     # for number in p.search(msg.content).groups():
     #     if number is not None:
     #         n = int(number)
     #         break
 
     # filename = f"./math/week{number}.txt"
-    
+
     # # cancel if they did not enter a number (should not really happen)
     # if number is None:
     #     await msg.channel.send(f"Förstår inte vad du menar! :(")
     #     return
-    
+
     # try:
     #     # I think that this should be somewhat safe, since I only allow
     #     # the end user to input an integer
@@ -86,10 +87,12 @@ def get_param(name, src, fallback):
     # except Exception:
     #     await msg.channel.send(f"Hittar inga uppgifter för vecka {n}! :(")
 
-@add("mat|lunch|hungrig|resturang|meny|menu|käk|äta|förtära|middag|servera")
+
+@add("(^| +)(mat|lunch|hungrig|resturang|meny|menu|käk|äta|förtära|middag|servera)($| +)")
 async def menu(msg):
     """**Meny** - info om lunchmenyerna för de olika resturangerna på campus"""
     await msg.channel.send(get_menu(msg.content))
+
 
 @add("schema|lektion")
 async def print_schedule(msg):
@@ -100,38 +103,48 @@ async def print_schedule(msg):
         title, events = schedule.day(0)
         await msg.channel.send(title)
         await send_events(events, msg.channel)
-    
+
     if "imorgon" in content or "morgondag" in content or "i morgon" in content:
         title, events = schedule.day(1)
         await msg.channel.send(title)
         await send_events(events, msg.channel)
-    
+
     if "övermorgon" in content:
         title, events = schedule.day(2)
         await msg.channel.send(title)
         await send_events(events, msg.channel)
-        
+
     if "nästa" in content:
         title, event = schedule.get_next()
         if event is not None:
             await msg.channel.send(title, embed=event)
         else:
-             await msg.channel.send(title)
-    
+            await msg.channel.send(title)
+
     if "nu" in content:
         title, events = schedule.get_current()
         await msg.channel.send(title)
         await send_events(events, msg.channel)
 
+    # fallback, send todays schedule (a bit of a hack)
+    if not any(x in content for x in [
+        "idag", "imorgon", "morgondag", "i morgon", "övermorgon", "nästa", "nu"]):
+        title, events = schedule.day(0)
+        await msg.channel.send(title)
+        await send_events(events, msg.channel)
+
+
 async def send_events(events, channel):
-        for event in events:
-            await channel.send(embed=event)
+    for event in events:
+        await channel.send(embed=event)
+
 
 @add("boka|grupprum")
 async def booking(msg):
     """**Boka grupprum** - skicka länken för att boka ett grupprum"""
     link = "https://cloud.timeedit.net/chalmers/web/b1/"
     await msg.channel.send(f"Här är länken för att boka ett grupprum på campus:\n {link}")
+
 
 @add("härma")
 async def imitate(msg):
@@ -163,7 +176,9 @@ async def hello(msg):
     """**Hej** - Hälsa!"""
     await msg.channel.send("hej!")
 
-# should aways be of lowest priority 
+# should aways be of lowest priority
+
+
 @add(lambda _: True)
 async def failure(msg):
     # otherwise... print a failure phrase
